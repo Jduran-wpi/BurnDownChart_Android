@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.burnitdownpres.fragments.list.ListFragment"
+        android:label="BurnItDown"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.burnitdownpres.fragments.add.addFragment"
+        android:label="Add a Project"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.burnitdownpres.fragments.update.UpdateFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.burnitdownpres.database.ProjectWithTasks" />
+        <action
+            android:id="@+id/action_updateFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+        <action
+            android:id="@+id/action_updateFragment_to_updateTask"
+            app:destination="@id/updateTask" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.burnitdownpres.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/completedFragment"
+        android:name="com.example.burnitdownpres.fragments.completed.CompletedFragment"
+        android:label="Completed Projects"
+        tools:layout="@layout/fragment_completed" />
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.example.burnitdownpres.fragments.update.addTask.addTaskFragment"
+        android:label="Add Task"
+        tools:layout="@layout/fragment_add_task" >
+        <action
+         android:id="@+id/action_addTaskFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <argument
+            android:name="currentProject"
+            app:argType="com.example.burnitdownpres.database.Project" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTask"
+        android:name="com.example.burnitdownpres.fragments.update.taskupdate.UpdateTask"
+        android:label="fragment_update_task"
+        tools:layout="@layout/fragment_update_task" >
+        <action
+            android:id="@+id/action_updateTask_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <argument
+            android:name="currentTask"
+            app:argType="com.example.burnitdownpres.database.Task" />
+    </fragment>
+</navigation>
